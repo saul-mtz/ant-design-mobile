@@ -11,7 +11,7 @@ title:
 import { Toast, WhiteSpace, WingBlank, Button } from 'antd-mobile';
 
 function showToast() {
-  Toast.info('这是一个 toast 提示!!!', 1);
+  Toast.info('这是一个 toast 提示!!!', 100);
 }
 
 function showToastNoMask() {

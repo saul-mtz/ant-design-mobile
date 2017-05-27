@@ -49,13 +49,13 @@ $ npm install babel-plugin-import --save-dev
 ## Usage
 
 > If you encounter an error, please refer [#56](https://github.com/ant-design/ant-design-mobile/issues/56) and [Samples](https://github.com/ant-design/antd-mobile-samples) first.
-> How antd mobile deal with web and react native code? see [Wiki](https://github.com/ant-design/ant-design-mobile/wiki/How-antd-mobile-deal-with-web-and-react-native-code-%3F)
+>
 
 #### Web usage
 
 > The following use the webpack@1.x version, if it is webpack@2.x please modify the corresponding configuration yourself.
 
-- Set the `resolve` field on webpack configuration file.
+- 1. Set the `resolve` field on webpack configuration file.
 
   ```
   resolve: {
@@ -63,8 +63,9 @@ $ npm install babel-plugin-import --save-dev
     extensions: ['', '.web.js', '.js', '.json'],
   },
   ```
+> If you are curious about why we need webpack resolve.extension configuration，see [How antd-mobile deal with web and react native code?](https://github.com/ant-design/ant-design-mobile/wiki/How-antd-mobile-deal-with-web-and-react-native-code-%3F)
 
-- Use the [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) plugin support component to load on demand, set as follows:
+- 2. Use the [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) plugin support component to load on demand, set as follows:
 
   ```js
   // .babelrc
@@ -72,11 +73,12 @@ $ npm install babel-plugin-import --save-dev
   // or webpack config file
   webpackConfig.babel.plugins.push(['import', { libraryName: 'antd-mobile', style: 'css' }]);
   ```
+> If you are curious about why we need babel-plugin-import , see [Import on Demand](https://ant.design/docs/react/getting-started#Import-on-Demand)
 
-- It is generally necessary to use the `Icon` component, need to configure [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader), see [Icon docs](https://mobile.ant.design/components/icon) for details.
+- 3. It is generally necessary to use the `Icon` component, need to configure [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader), see [Icon docs](https://mobile.ant.design/components/icon) for details.
 
-- Entry html page Required settings:
-    - Use HD program settings, see [antd-mobile-0.8-以上版本「高清」方案设置](https://github.com/ant-design/ant-design-mobile/wiki/antd-mobile-0.8-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E3%80%8C%E9%AB%98%E6%B8%85%E3%80%8D%E6%96%B9%E6%A1%88%E8%AE%BE%E7%BD%AE) for details.
+- 4. Entry html page Required settings:
+    - since antd-mobile use `rem`, you need to add viewport scale and html fontSize setting scripts to your html header, see [antd-mobile-0.8-以上版本「高清」方案设置](https://github.com/ant-design/ant-design-mobile/wiki/antd-mobile-0.8-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E3%80%8C%E9%AB%98%E6%B8%85%E3%80%8D%E6%96%B9%E6%A1%88%E8%AE%BE%E7%BD%AE) for details.
     - Use [FastClick](https://github.com/ftlabs/fastclick) (ref [#576](https://github.com/ant-design/ant-design-mobile/issues/576))
     - Use Promise fallback support (some Android phones do not support Promise), as follows:
         ```js

@@ -50,13 +50,13 @@ $ npm install babel-plugin-import --save-dev
 
 > 遇到报错，请先参考 [示例脚手架](https://github.com/ant-design/ant-design-mobile/issues/56) 及 [官方示例集](https://github.com/ant-design/antd-mobile-samples)
 
-> How antd mobile deal with web and react native code? see [Wiki](https://github.com/ant-design/ant-design-mobile/wiki/How-antd-mobile-deal-with-web-and-react-native-code-%3F)
+> How antd-mobile deal with web and react native code? see [Wiki](https://github.com/ant-design/ant-design-mobile/wiki/How-antd-mobile-deal-with-web-and-react-native-code-%3F)
 
 #### Web 使用方式
 
 > 以下使用 webpack@1.x 版本，如果是 webpack@2.x 请自己修改相应配置语法
 
-- 设置 webpack 的 resolve
+- 1. 设置 webpack 的 resolve
 
   ```
   resolve: {
@@ -64,8 +64,9 @@ $ npm install babel-plugin-import --save-dev
     extensions: ['', '.web.js', '.js', '.json'],
   },
   ```
+> 如果你想了解为什么需要配置 webpack resolve.extension, 请看 [How antd-mobile deal with web and react native code?](https://github.com/ant-design/ant-design-mobile/wiki/How-antd-mobile-deal-with-web-and-react-native-code-%3F)
 
-- 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 插件支持组件按需加载，设置如下：
+- 2. 使用 [babel-plugin-import](https://github.com/ant-design/babel-plugin-import) 插件支持组件按需加载，设置如下：
 
   ```js
   // .babelrc
@@ -73,8 +74,9 @@ $ npm install babel-plugin-import --save-dev
   // or webpack config file
   webpackConfig.babel.plugins.push(['import', { libraryName: 'antd-mobile', style: 'css' }]);
   ```
+> 如果你想了解为什么需要配置 babel-plugin-import ,请看 [按需加载](https://ant.design/docs/react/getting-started-cn#按需加载)
 
-- 一般都需要用到 `Icon` 组件，需要配置 [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader), 配置方案见 [Icon 文档](https://mobile.ant.design/components/icon)
+- 3. 一般都需要用到 `Icon` 组件，需要配置 [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader), 配置方案见 [Icon 文档](https://mobile.ant.design/components/icon)
 
 - 入口页面必需的设置：
     - 引入『高清方案』设置：具体方法见 wiki 里 [antd-mobile-0.8-以上版本「高清」方案设置](https://github.com/ant-design/ant-design-mobile/wiki/antd-mobile-0.8-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E3%80%8C%E9%AB%98%E6%B8%85%E3%80%8D%E6%96%B9%E6%A1%88%E8%AE%BE%E7%BD%AE)
