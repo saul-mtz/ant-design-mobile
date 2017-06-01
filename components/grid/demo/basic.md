@@ -6,14 +6,14 @@ title:
 ---
 
 ````jsx
-import { Grid } from 'antd-mobile';
+import { Grid, Tabs } from 'antd-mobile';
 
 const data = Array.from(new Array(9)).map((_val, i) => ({
   icon: 'https://os.alipayobjects.com/rmsportal/IptWdCkrtkAUfjE.png',
   text: `name${i}`,
 }));
 
-const data1 = Array.from(new Array(5)).map((_val, i) => ({
+const data1 = Array.from(new Array(2)).map((_val, i) => ({
   img: 'https://zos.alipayobjects.com/rmsportal/wIjMDnsrDoPPcIV.png',
   text: `name${i}`,
 }));
@@ -27,7 +27,14 @@ const GridExample = () => (
     <Grid data={data} columnNum={3} hasLine={false} />
 
     <div className="sub-title">carousel</div>
-    <Grid data={data} columnNum={3} isCarousel onClick={(_el, index) => alert(index)} />
+    <Tabs>
+      <Tabs.TabPane key="1" tab="1">
+          <Grid data={data1} columnNum={3} isCarousel onClick={(_el, index) => alert(index)} />
+      </Tabs.TabPane>
+      <Tabs.TabPane key="2" tab="2">
+          <Grid data={data} columnNum={3} isCarousel onClick={(_el, index) => alert(index)} />
+      </Tabs.TabPane>
+    </Tabs>
 
     <div className="sub-title">custom content</div>
     <Grid data={data1}
