@@ -20,13 +20,7 @@ const data1 = Array.from(new Array(2)).map((_val, i) => ({
 
 const GridExample = () => (
   <div>
-    <div className="sub-title">basic usage</div>
-    <Grid data={data} />
 
-    <div className="sub-title">no border</div>
-    <Grid data={data} columnNum={3} hasLine={false} />
-
-    <div className="sub-title">carousel</div>
     <Tabs>
       <Tabs.TabPane key="1" tab="1">
           <Grid data={data1} columnNum={3} isCarousel onClick={(_el, index) => alert(index)} />
@@ -36,19 +30,7 @@ const GridExample = () => (
       </Tabs.TabPane>
     </Tabs>
 
-    <div className="sub-title">custom content</div>
-    <Grid data={data1}
-      columnNum={3}
-      hasLine={false}
-      renderItem={(dataItem, index) => (
-        <div style={{ margin: '0.16rem', background: '#f7f7f7', textAlign: 'center' }}>
-          <div style={{ background: 'rgba(0, 0, 0, 0.1)', padding: '0.08rem' }}>
-            <span>{index + 1}.{dataItem.text}</span>
-          </div>
-          <img src={dataItem.img} style={{ width: '80%', margin: '0.12rem' }} alt="icon" />
-        </div>
-      )}
-    />
+
   </div>
 );
 
